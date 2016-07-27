@@ -27,7 +27,7 @@ class PagesController extends BaseController {
         $data['companyName'] = 'LaraSCI';
         //the use function here helps ensure the data variable is available in our queue closure
         Mail::queue('emails.template', $data, function($message) use($data) {
-            $message->from($data['email'], 'Kitulu');
+            $message->from($data['email'], $data['fullname']);
             $message->to('info@larasci.com');
             $message->subject('New contact form email');
         });
